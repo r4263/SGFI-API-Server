@@ -1,5 +1,3 @@
-
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -25,9 +23,9 @@ db.sequelize.sync()
     });
 
 require("./src/routes/usuario.routes")(app); //rotas da tabela usuários
-require("./src/routes/insumo.routes")(app); //rotas da tabela usuários
-require("./src/routes/lote.routes")(app); //rotas da tabela usuários
-require("./src/routes/compra.routes")(app); //rotas da tabela usuários
+require("./src/routes/insumo.routes")(app); //rotas da tabela insumos
+require("./src/routes/lote.routes")(app); //rotas da tabela lotes
+require("./src/routes/compra.routes")(app); //rotas da tabela compras
 
 
 const PORT = process.env.PORT || 4444;
