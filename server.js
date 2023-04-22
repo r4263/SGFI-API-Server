@@ -24,11 +24,11 @@ db.sequelize.sync()
         console.log("Falha ao sincronizar banco de dados: " + err.message);
     });
 
-// app.get("/", (req, res) => {
-//     res.json('RESTAPI Node.js + Express + Sequelize para PostgreSQL');
-// });
-
 require("./src/routes/usuario.routes")(app); //rotas da tabela usuários
+require("./src/routes/insumo.routes")(app); //rotas da tabela usuários
+require("./src/routes/lote.routes")(app); //rotas da tabela usuários
+require("./src/routes/compra.routes")(app); //rotas da tabela usuários
+
 
 const PORT = process.env.PORT || 4444;
 app.listen(PORT, () => {

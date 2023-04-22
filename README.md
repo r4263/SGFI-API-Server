@@ -13,7 +13,7 @@
 
 -"/insumos" - GET, POST - Visualizar e cadastrar insumos.
 
--"/insumos/:id/:nome" - GET, PUT, DELETE - Pesquisa, edição e exclusão de insumos específicos.
+-"/insumos/:id" - GET, PUT, DELETE - Pesquisa, edição e exclusão de insumos específicos.
 
 -"/insumos/:tipo" - GET - Pesquisa específica por fármaco/insumo.
 
