@@ -2,16 +2,16 @@
     npm install express sequelize pg pg-hstore cors --save
     npm install -g nodemon
 
-# ---adicionar à package.json---
+# Adicionar à package.json - somente para auto refresh com nodemon
   "scripts": {
     "start": "node server.js"
   }
 
-# executar servidor 
+# Executar servidor 
         -> desenvolvimento: "nodemon server.js"
         -> server: "node server.js"
 
-# ---Rotas---
+# Rotas da API
 "/" default - GET -
 "/usuarios" - GET, POST - Visualizar, validar e cadastra usuários.
 "/insumos" - GET, POST - Visualizar e cadastrar insumos.
