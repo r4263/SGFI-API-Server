@@ -6,6 +6,8 @@
   -> desenvolvimento: "nodemon server.js"
   -> server: "node server.js"
 
+<h3>SERVIDOR ATENDE NA PORTA 4444<h3>
+
 # Rotas da API
 -"/api/" default - GET -
 
