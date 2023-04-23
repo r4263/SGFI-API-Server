@@ -33,12 +33,8 @@ exports.create = (req, res) => {
         });
 };
 
-// Retorna todos os elementos do banco.
-exports.getAll = (req, res) => {
-    const nome = req.query.nome;
-    var condition = nome ? { nome: { [Op.contains]: `%${nome}%` } } : null;
-
-    Usuario.findAll({ where: condition })
+exports.getUserBy = (req, res) => {
+    Usuario.findAll({ where: req.query.nome })
         .then(data => {
             res.send(data);
         })
@@ -46,6 +42,37 @@ exports.getAll = (req, res) => {
             res.status(500).send({
                 message:
                     err.message || "Ocorreu um erro ao retornar os objetos."
+            });
+        });
+};
+
+exports.getUserByName = (req, res) => {
+    Usuario.findAll({
+        where: {
+            nome: {
+                [Op.iLike]: `%${req.query.nome}%`
+            }
+        }
+    })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message:
+                    err.message || "Ocorreu um erro ao retornar os objetos."
+            });
+        });
+};
+
+exports.getUserById = (req, res) => {
+    Usuario.findByPk(req.query.id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(404).send({
+                message: `Não foi possível encontrar o usuário com o ID=${req.query.id}.`
             });
         });
 };
