@@ -13,9 +13,10 @@
 
 -"/api/usuarios" - GET, POST - Visualizar, validar e cadastra usuários.
 
--"/api/insumos" - GET, POST - Visualizar e cadastrar insumos.
+-"/api/insumos" - GET, POST - Visualizar todos e cadastrar insumos.
 
--"/api/insumos/:id" - GET, PUT, DELETE - Pesquisa, edição e exclusão de insumos específicos.
+-"/api/insumos/id" - GET, PUT, DELETE - Pesquisa, edição e exclusão de insumos específicos.
+-"/api/insumos/tipo"
 
 -"/api/insumos/:tipo" - GET - Pesquisa específica por fármaco/insumo.
 
@@ -26,7 +27,6 @@
 -"/api/lotes" - GET, POST - Consulta e cadastro de novos lotes contidos em compras(linkado à IDCompra_FK).
 
 -"/api/lotes/:id" - GET, PUT, DELETE - Consulta específica, alteração ou exclusão de um lote de compras.
-
 
 # Notas sobre as rotas e funcionamento do CRUD
 <div>

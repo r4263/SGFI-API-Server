@@ -23,7 +23,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false
     },
     permissaonivel: {
-      type: Sequelize.BLOB,
+      type: Sequelize.SMALLINT,
       allowNull: false
     }
   });

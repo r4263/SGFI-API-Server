@@ -3,11 +3,19 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // // Criar novo insumo
-    // router.post("/", insumo.create);
+    // Criar novo insumo
+    router.post("/", insumo.create);
 
-    // // // Retorna todos os insumos
-    // router.get("/", insumo.getAll);
+    // Visualizar todos insumos
+    router.get("/", insumo.getAll);
+
+    // Retorna os insumos pelo ID
+    router.get("/id", insumo.getById);
+
+    // Retorna os insumos pelo Tipo
+    router.get("/tipo", insumo.getByType);
+
+    router.put("/", insumo.update);
 
     app.use('/api/insumos', router);
 };

@@ -19,7 +19,7 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
         tipo: {
-            type: Sequelize.BOOLEAN,
+            type: Sequelize.SMALLINT,
             allowNull: false
         },
         barcodeID: {
