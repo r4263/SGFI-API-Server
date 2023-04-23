@@ -31,6 +31,7 @@
 # Notas sobre as rotas e 
 -POST: -Create
 <p>-JSON;</p>
+<p></p>
 
 
 -GET: -Read
