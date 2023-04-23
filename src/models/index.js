@@ -23,4 +23,20 @@ db.compra = require("./compra.model.js")(sequelize, Sequelize);
 db.lote = require("./lote.model.js")(sequelize, Sequelize);
 db.insumo = require("./insumo.model.js")(sequelize, Sequelize);
 
+// Declaração de chaves estrangeiras
+db.compra.belongsTo(db.usuario, {
+  constraint: true,
+  foreignKey: 'idUsuario'
+});
+
+db.lote.belongsTo(db.compra, {
+  constraint: true,
+  foreignKey: 'idCompra'
+});
+
+db.lote.belongsTo(db.insumo, {
+  constraint: true,
+  foreignKey: 'idInsumo'
+});
+
 module.exports = db;

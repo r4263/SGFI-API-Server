@@ -5,7 +5,8 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
-        }
+            
+        }     
     });
     return Compra;
 };
