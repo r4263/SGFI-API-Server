@@ -30,8 +30,9 @@
 
 # Notas sobre as rotas e 
 -POST: -Create
--JSON;
+<p>-JSON;</p>
+
 
 -GET: -Read
--Valores pela query, no link: "/?exemplo=exemplo"; 
--Nas funções podendo ser encontrados em req.query.exemplo;
+<p>-Valores pela query, no link: "/?exemplo=exemplo";</p>
+<p>-Nas funções podendo ser encontrados em req.query.exemplo;</p>
