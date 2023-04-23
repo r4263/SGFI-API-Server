@@ -1,8 +1,8 @@
 const db = require("../models");
-const Usuario = db.usuario;
+const Lote = db.lote;
 const Op = db.Sequelize.Op;
 
-// Controller para criar um novo usuário
+// Controller para criar um novo insumo
 exports.create = (req, res) => {
     if (!req.body) {
         res.status(400).send({
@@ -11,34 +11,31 @@ exports.create = (req, res) => {
         return;
     }
 
-    // Criando objeto usuário e suas "características"
-    const usuario = {
-        nome: req.body.nome,
-        login: req.body.login,
-        email: req.body.email,
-        senha: req.body.senha,
-        permissaonivel: req.body.permissaonivel
+    // Criando objeto insumo e suas "características"
+    const lote = {
+        quantidade: req.body.quantidade,
+        validade: req.body.validade,
+        valorunidade: req.body.valorunidade,
+        observacoes: req.body.observacoes,
+        quantidadeconsumida: req.body.quantidadeconsumida
     };
 
-    // Salvando o usuário no banco
-    Usuario.create(usuario)
+    // Salvando o insumo no banco
+    Lote.create(lote)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(500).send({
                 message:
-                    err.message || "Ocorreu um erro ao criar o usuário"
+                    err.message || "Ocorreu um erro ao criar o insumo"
             });
         });
 };
 
-// Retorna todos os elementos do banco.
+// Controller para retornar todos os insumos registrados
 exports.getAll = (req, res) => {
-    const nome = req.query.nome;
-    var condition = nome ? { nome: { [Op.contains]: `%${nome}%` } } : null;
-
-    Usuario.findAll({ where: condition })
+    Lote.findAll()
         .then(data => {
             res.send(data);
         })
@@ -48,4 +45,93 @@ exports.getAll = (req, res) => {
                     err.message || "Ocorreu um erro ao retornar os objetos."
             });
         });
+};
+
+// Controller para procurar insumo pelo ID
+exports.getById = (req, res) => {
+    if (!req.params.id) {
+        res.status(500).send({
+            message: "O id não pode ser vazio!"
+        });
+        return;
+    }
+
+    Lote.findByPk(req.params.id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(404).send({
+                message: `Não foi possível encontrar o usuário com o ID=${req.params.id}.`
+            });
+        });
+};
+
+// Controller para procurar insumo pelo tipo
+exports.getByType = (req, res) => {
+    if (!req.params.tipo) {
+        res.status(500).send({
+            message: "O tipo não pode ser vazio!"
+        });
+        return;
+    }
+
+    Lote.findAll({ where: { tipo: { [Op.eq]: req.params.tipo } } })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(404).send({
+                message: `Não foi possível encontrar o insumo com o tipo=${req.params.tipo}.`
+            });
+        });
+};
+
+// Controller para atualizar dados do insumo pelo ID
+exports.update = (req, res) => {
+    Insumo.update(req.body, {where: { id: req.params.id }})
+      .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Insumo atualizado!"
+          });
+        } else {
+          res.send({
+            message: `Impossivel atualizar insumo com o ID=${req.params.id}. Possível insumo inexistente ou o corpo da requisição está vazio!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Erro ao atualizar o insumo com ID=" + req.params.id
+        });
+      });
+  };
+
+// Controller para deletar um objeto específico pelo ID
+exports.delete = (req, res) => {
+    if (!req.params.id) {
+        res.status(500).send({
+            message: "O id não pode ser vazio!"
+        });
+        return;
+    }
+
+    Insumo.destroy({where: { id: req.params.id }})
+    .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Insumo apagado com sucesso!"
+          });
+        } else {
+          res.send({
+            message: `Impossivel apagar insumo com o ID=${req.params.id}. Possivelmente não encontrado!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Não foi possível deletar o insumo com ID=" + req.params.id
+        });
+      });
 };

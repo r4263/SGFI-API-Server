@@ -33,23 +33,23 @@ exports.create = (req, res) => {
         });
 };
 
-// Função apenas de teste/futura implementação
-exports.getUserBy = (req, res) => {
-    Usuario.findAll({ where: req.query.nome })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Ocorreu um erro ao retornar os objetos."
-            });
-        });
-};
+// // Função apenas de teste/futura implementação
+// exports.getUserBy = (req, res) => {
+//     Usuario.findAll({ where: req.query.nome })
+//         .then(data => {
+//             res.send(data);
+//         })
+//         .catch(err => {
+//             res.status(500).send({
+//                 message:
+//                     err.message || "Ocorreu um erro ao retornar os objetos."
+//             });
+//         });
+// };
 
 // Controller para procurar usuário pelo nome
-exports.getUserByName = (req, res) => {
-    if (!req.query.nome) {
+exports.getByName = (req, res) => {
+    if (!req.params.nome) {
         res.status(500).send({
             message: "O nome não pode ser vazio!"
         });
@@ -59,7 +59,7 @@ exports.getUserByName = (req, res) => {
     Usuario.findAll({
         where: {
             nome: {
-                [Op.iLike]: `%${req.query.nome}%`
+                [Op.iLike]: `%${req.params.nome}%`
             }
         }
     })
@@ -76,14 +76,14 @@ exports.getUserByName = (req, res) => {
 };
 
 // Controller para procurar usuário pelo ID
-exports.getUserById = (req, res) => {
-    Usuario.findByPk(req.query.id)
+exports.getById = (req, res) => {
+    Usuario.findByPk(req.params.id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(404).send({
-                message: `Não foi possível encontrar o usuário com o ID=${req.query.id}.`
+                message: `Não foi possível encontrar o usuário com o ID=${req.params.id}.`
             });
         });
 };

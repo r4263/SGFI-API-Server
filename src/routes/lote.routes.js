@@ -3,11 +3,8 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // Criar novo lote
-    // router.post("/", lote.create);
-
-    // // // Retorna todos lotes
-    // router.get("/", lote.getAll);
+    router.post("/", lote.create);// Criar novo lote
+    router.get("/", lote.getAll); // Retorna todos lotes
 
     app.use('/api/lotes', router);
 };

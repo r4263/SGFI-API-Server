@@ -49,40 +49,40 @@ exports.getAll = (req, res) => {
 
 // Controller para procurar insumo pelo ID
 exports.getById = (req, res) => {
-    if (!req.query.id) {
+    if (!req.params.id) {
         res.status(500).send({
             message: "O id não pode ser vazio!"
         });
         return;
     }
 
-    Insumo.findByPk(req.query.id)
+    Insumo.findByPk(req.params.id)
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(404).send({
-                message: `Não foi possível encontrar o usuário com o ID=${req.query.id}.`
+                message: `Não foi possível encontrar o usuário com o ID=${req.params.id}.`
             });
         });
 };
 
 // Controller para procurar insumo pelo tipo
 exports.getByType = (req, res) => {
-    if (!req.query.tipo) {
+    if (!req.params.tipo) {
         res.status(500).send({
             message: "O tipo não pode ser vazio!"
         });
         return;
     }
 
-    Insumo.findAll({ where: { tipo: { [Op.eq]: req.query.tipo } } })
+    Insumo.findAll({ where: { tipo: { [Op.eq]: req.params.tipo } } })
         .then(data => {
             res.send(data);
         })
         .catch(err => {
             res.status(404).send({
-                message: `Não foi possível encontrar o insumo com o tipo=${req.query.tipo}.`
+                message: `Não foi possível encontrar o insumo com o tipo=${req.params.tipo}.`
             });
         });
 };
