@@ -28,7 +28,7 @@
 -"/api/lotes/:id" - GET, PUT, DELETE - Consulta específica, alteração ou exclusão de um lote de compras.
 
 
-# Notas sobre as rotas e 
+# Notas sobre as rotas e funcionamento do CRUD
 -POST: -Create
 <p>-JSON;</p>
 <p></p>
