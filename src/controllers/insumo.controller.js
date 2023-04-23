@@ -87,10 +87,9 @@ exports.getByType = (req, res) => {
         });
 };
 
+// Controller para atualizar dados do insumo pelo ID
 exports.update = (req, res) => {
-    Insumo.update(req.body, {
-      where: { id: req.params.id }
-    })
+    Insumo.update(req.body, {where: { id: req.params.id }})
       .then(num => {
         if (num == 1) {
           res.send({
@@ -109,63 +108,30 @@ exports.update = (req, res) => {
       });
   };
 
+// Controller para deletar um objeto específico pelo ID
 exports.delete = (req, res) => {
-    if (!req.query.id) {
+    if (!req.params.id) {
         res.status(500).send({
             message: "O id não pode ser vazio!"
         });
         return;
     }
 
-    Insumo.findByPk(req.query.id)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(404).send({
-                message: `Não foi possível encontrar o usuário com o ID=${req.query.id}.`
-            });
+    Insumo.destroy({where: { id: req.params.id }})
+    .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Insumo apagado com sucesso!"
+          });
+        } else {
+          res.send({
+            message: `Impossivel apagar insumo com o ID=${req.params.id}. Possivelmente não encontrado!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Não foi possível deletar o insumo com ID=" + req.params.id
         });
+      });
 };
-
-// // Função apenas de teste/futura implementação
-// exports.getUserBy = (req, res) => {
-//     Usuario.findAll({ where: req.query.nome })
-//         .then(data => {
-//             res.send(data);
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 message:
-//                     err.message || "Ocorreu um erro ao retornar os objetos."
-//             });
-//         });
-// };
-
-// // Controller para procurar usuário pelo nome
-// exports.getUserByName = (req, res) => {
-//     if (!req.query.nome) {
-//         res.status(500).send({
-//             message: "O nome não pode ser vazio!"
-//         });
-//         return;
-//     }
-
-//     Usuario.findAll({
-//         where: {
-//             nome: {
-//                 [Op.iLike]: `%${req.query.nome}%`
-//             }
-//         }
-//     })
-//         .then(data => {
-//             res.send(data);
-//         })
-//         .catch(err => {
-//             res.status(500).send({
-//                 message:
-//                     err.message || "Ocorreu um erro ao retornar os objetos."
-//             });
-//         });
-
-// };

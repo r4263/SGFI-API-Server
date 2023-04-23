@@ -38,3 +38,6 @@
 <p>-Valores pela query, no link: "/?exemplo=exemplo";</p>
 <p>-Nas funções podendo ser encontrados em req.query.exemplo;</p>
 </div>
+<h4>PUT: -Update</h4>
+<p>-Valores em no corpo para atualizar e req.params.id(/api/...:id) para referenciar ao objeto à ser atualizado</p>
+<p>-Aspecto de request PUT na URL: localhost:4444/api/.../2</p>
