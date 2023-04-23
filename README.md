@@ -33,7 +33,7 @@
 <a>POST: -Create</a>
 <p>-JSON;</p>
 </div>
-
+<br>
 <div>
 <a>GET: -Read</a>
 <p>-Valores pela query, no link: "/?exemplo=exemplo";</p>
