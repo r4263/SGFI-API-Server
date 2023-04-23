@@ -30,12 +30,11 @@
 
 # Notas sobre as rotas e funcionamento do CRUD
 <div>
-<h5>POST: -Create</h5>
+<h4>POST: -Create</h4>
 <p>-JSON;</p>
 </div>
-<br>
 <div>
-<h5>GET: -Read</h5>
+<h4>GET: -Read</h4>
 <p>-Valores pela query, no link: "/?exemplo=exemplo";</p>
 <p>-Nas funções podendo ser encontrados em req.query.exemplo;</p>
 </div>
