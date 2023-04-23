@@ -47,6 +47,13 @@ exports.getUserBy = (req, res) => {
 };
 
 exports.getUserByName = (req, res) => {
+    if (!req.query.nome) {
+        res.status(500).send({
+            message: "O nome não pode ser vazio!"
+        });
+        return;
+    }
+
     Usuario.findAll({
         where: {
             nome: {
@@ -63,6 +70,7 @@ exports.getUserByName = (req, res) => {
                     err.message || "Ocorreu um erro ao retornar os objetos."
             });
         });
+
 };
 
 exports.getUserById = (req, res) => {
