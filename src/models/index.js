@@ -25,18 +25,30 @@ db.insumo = require("./insumo.model.js")(sequelize, Sequelize);
 
 // Declaração de chaves estrangeiras
 db.compra.belongsTo(db.usuario, {
-  constraint: true,
-  foreignKey: 'idUsuario'
+  foreignKey: {
+    constraint: true,
+    name: 'idUsuario',
+    allowNull: false,
+    onDelete: 'CASCADE'
+  }
 });
 
 db.lote.belongsTo(db.compra, {
-  constraint: true,
-  foreignKey: 'idCompra'
+  foreignKey: {
+    constraint: true,
+    name: 'idCompra',
+    allowNull: false,
+    onDelete: 'CASCADE'
+  }
 });
 
 db.lote.belongsTo(db.insumo, {
-  constraint: true,
-  foreignKey: 'idInsumo'
+  foreignKey: {
+    constraint: true,
+    foreignKey: 'idInsumo',
+    allowNull: false,
+    onDelete: 'CASCADE'
+  }
 });
 
 module.exports = db;

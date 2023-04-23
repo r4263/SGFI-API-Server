@@ -3,8 +3,8 @@ module.exports = app => {
 
     var router = require("express").Router();
 
-    // // Criar nova compra
-    // router.post("/", compra.create);
+    // Criar nova compra
+    router.post("/", compra.create);
 
     // // // Retorna todas as compras
     // router.get("/", compra.getAll);

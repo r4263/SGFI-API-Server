@@ -62,51 +62,31 @@ exports.getById = (req, res) => {
         })
         .catch(err => {
             res.status(404).send({
-                message: `Não foi possível encontrar o usuário com o ID=${req.params.id}.`
-            });
-        });
-};
-
-// Controller para procurar insumo pelo tipo
-exports.getByType = (req, res) => {
-    if (!req.params.tipo) {
-        res.status(500).send({
-            message: "O tipo não pode ser vazio!"
-        });
-        return;
-    }
-
-    Lote.findAll({ where: { tipo: { [Op.eq]: req.params.tipo } } })
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(404).send({
-                message: `Não foi possível encontrar o insumo com o tipo=${req.params.tipo}.`
+                message: `Não foi possível encontrar o lote com o ID=${req.params.id}.`
             });
         });
 };
 
 // Controller para atualizar dados do insumo pelo ID
 exports.update = (req, res) => {
-    Insumo.update(req.body, {where: { id: req.params.id }})
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "Insumo atualizado!"
-          });
-        } else {
-          res.send({
-            message: `Impossivel atualizar insumo com o ID=${req.params.id}. Possível insumo inexistente ou o corpo da requisição está vazio!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Erro ao atualizar o insumo com ID=" + req.params.id
+    Insumo.update(req.body, { where: { id: req.params.id } })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Insumo atualizado!"
+                });
+            } else {
+                res.send({
+                    message: `Impossivel atualizar lote com o ID=${req.params.id}. Possível insumo inexistente ou o corpo da requisição está vazio!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Erro ao atualizar o insumo com ID=" + req.params.id
+            });
         });
-      });
-  };
+};
 
 // Controller para deletar um objeto específico pelo ID
 exports.delete = (req, res) => {
@@ -117,21 +97,21 @@ exports.delete = (req, res) => {
         return;
     }
 
-    Insumo.destroy({where: { id: req.params.id }})
-    .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "Insumo apagado com sucesso!"
-          });
-        } else {
-          res.send({
-            message: `Impossivel apagar insumo com o ID=${req.params.id}. Possivelmente não encontrado!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Não foi possível deletar o insumo com ID=" + req.params.id
+    Insumo.destroy({ where: { id: req.params.id } })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "Insumo apagado com sucesso!"
+                });
+            } else {
+                res.send({
+                    message: `Impossivel apagar insumo com o ID=${req.params.id}. Possivelmente não encontrado!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Não foi possível deletar o insumo com ID=" + req.params.id
+            });
         });
-      });
 };
