@@ -24,3 +24,12 @@
 -"/api/lotes" - GET, POST - Consulta e cadastro de novos lotes contidos em compras(linkado à IDCompra_FK).
 
 -"/api/lotes/:id" - GET, PUT, DELETE - Consulta específica, alteração ou exclusão de um lote de compras.
+
+
+# Notas sobre as rotas e 
+-POST: -Create
+-JSON;
+
+-GET: -Read
+-Valores pela query, no link: "/?exemplo=exemplo"; 
+-Nas funções podendo ser encontrados em req.query.exemplo;

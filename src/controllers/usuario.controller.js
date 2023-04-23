@@ -33,6 +33,7 @@ exports.create = (req, res) => {
         });
 };
 
+// Função apenas de teste/futura implementação
 exports.getUserBy = (req, res) => {
     Usuario.findAll({ where: req.query.nome })
         .then(data => {
@@ -46,6 +47,7 @@ exports.getUserBy = (req, res) => {
         });
 };
 
+// Controller para procurar usuário pelo nome
 exports.getUserByName = (req, res) => {
     if (!req.query.nome) {
         res.status(500).send({
@@ -73,6 +75,7 @@ exports.getUserByName = (req, res) => {
 
 };
 
+// Controller para procurar usuário pelo ID
 exports.getUserById = (req, res) => {
     Usuario.findByPk(req.query.id)
         .then(data => {
