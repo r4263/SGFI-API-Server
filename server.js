@@ -22,6 +22,7 @@ db.sequelize.sync()
         console.log("Falha ao sincronizar banco de dados: " + err.message);
     });
 
+require("./src/routes/login.routes")(app); //rota de login
 require("./src/routes/usuario.routes")(app); //rotas da tabela usuários
 require("./src/routes/insumo.routes")(app); //rotas da tabela insumos
 require("./src/routes/lote.routes")(app); //rotas da tabela lotes
