@@ -7,6 +7,7 @@ module.exports = app => {
     router.get("/", compra.getAll); // Retorna todas as compras
     router.get("/:id", compra.getById)
     router.get("/usuario/:idUsuario", compra.getByUserId)
+    router.delete("/:id", compra.delete);
 
     app.use('/api/compras', router);
 };

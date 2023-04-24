@@ -45,7 +45,6 @@ exports.getAll = (req, res) => {
 };
 
 exports.getByUserId = (req, res) => {
-
     console.log()
     Compra.findAll({
         where: {
@@ -80,4 +79,32 @@ exports.getById = (req, res) => {
                 message: " não encontrado"
             });
         });
+};
+
+// Controller para deletar um objeto específico pelo ID
+exports.delete = (req, res) => {
+    if (!req.params.id) {
+        res.status(500).send({
+            message: "O id não pode ser vazio!"
+        });
+        return;
+    }
+
+    Compra.destroy({where: { id: req.params.id }})
+    .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Compra apagada com sucesso!"
+          });
+        } else {
+          res.send({
+            message: `Impossivel apagar compra com o ID=${req.params.id}. Possivelmente não encontrado!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Não foi possível deletar a compra com ID=" + req.params.id
+        });
+      });
 };

@@ -85,6 +85,34 @@ exports.getById = (req, res) => {
         });
 };
 
+// Controller para deletar um objeto específico pelo ID
+exports.delete = (req, res) => {
+    if (!req.params.id) {
+        res.status(500).send({
+            message: "O id não pode ser vazio!"
+        });
+        return;
+    }
+
+    Lote.destroy({where: { id: req.params.id }})
+    .then(num => {
+        if (num == 1) {
+          res.send({
+            message: "Lote apagado com sucesso!"
+          });
+        } else {
+          res.send({
+            message: `Impossivel apagar lote com o ID=${req.params.id}. Possivelmente não encontrado!`
+          });
+        }
+      })
+      .catch(err => {
+        res.status(500).send({
+          message: "Não foi possível deletar o lote com ID=" + req.params.id
+        });
+      });
+};
+
 // Controller para atualizar dados do insumo pelo ID
 // exports.update = (req, res) => {
 //     Insumo.update(req.body, { where: { id: req.params.id } })
