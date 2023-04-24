@@ -45,7 +45,7 @@ db.lote.belongsTo(db.compra, {
 db.lote.belongsTo(db.insumo, {
   foreignKey: {
     constraint: true,
-    foreignKey: 'idInsumo',
+    name: 'idInsumo',
     allowNull: false,
     onDelete: 'CASCADE'
   }
