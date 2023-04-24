@@ -18,7 +18,6 @@ exports.validate = (req, res) => {
         }
     })
         .then(data => {
-            console.log(data.length);
             if (data.length === 0) {
                 return res.status(401).send({
                     message: "Não autorizado"
@@ -30,7 +29,7 @@ exports.validate = (req, res) => {
                 });
             }else{
                 return res.status(401).send({
-                    message: "Não autorizado, senha incorreta"
+                    message: "Não autorizado"
                 })
             }
             return;   
