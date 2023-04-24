@@ -19,7 +19,7 @@
 <p>PUT - "/:id" - Atualiza dados do lote pelo ID especificado</p>
 <p>DELETE - "/:id" - Apaga o lote especificado</p>
 </div>
-
+<br>
 <div>
 <h3>Rotas relacionadas à tabela COMPRA</h3>
 <h4>localhost:4444/api/compras/</h4>
@@ -29,7 +29,7 @@
 <p>GET - "/usuario/:idUsuario" - Retorna todas as compras cadastradas pelo usuários especificado na chave estrangeira "idUsuario"</p>
 <p>DELETE - "/:id" - Apaga compra especificada pelo ID</p>
 </div>
-
+<br>
 <div>
 <h3>Rotas relacionadas à tabela INSUMO</h3>
 <h4>localhost:4444/api/insumos/</h4>
@@ -40,7 +40,7 @@
 <p>PUT - "/:id" - Faz o update do insumo</p>
 <p>DELETE - "/:id" - Apaga insumo especificado pelo ID</p>
 </div>
-
+<br>
 <div>
 <h3>Rotas relacionadas à tabela USUARIO</h3>
 <h4>localhost:4444/api/usuarios/</h4>
@@ -48,3 +48,4 @@
 <p>GET - "/:id" - Retorna os usuários pelo ID</p>
 <p>GET - "/nome/:nome" - Retorna todos usuários pelo nome</p>
 </div>
+<br>
