@@ -3,13 +3,13 @@
     npm install -g nodemon
 
 # Executar servidor 
-  <a>-> desenvolvimento: "nodemon server.js"</a>
-  <a>-> server: "node server.js"</a>
+  <p>-> desenvolvimento: "nodemon server.js"</p>
+  <p>-> server: "node server.js"</p>
 
 <h3>Funcional em PostgreSQL 15<h3>
-<h4>nome da database: sgfidb</h4>
-<h4>usuário: defuser</h4>
-<h4>senha: teste</h4>
+<h4>Nome da database: sgfidb</h4>
+<h4>Usuário: defuser</h4>
+<h4>Senha: teste</h4>
 
 <h3>SERVIDOR ATENDE NA PORTA 4444<h3>
 
