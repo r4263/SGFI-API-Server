@@ -6,6 +6,11 @@
   <a>-> desenvolvimento: "nodemon server.js"</a>
   <a>-> server: "node server.js"</a>
 
+<h3>Funcional em PostgreSQL 15<h3>
+<h4>nome da database: sgfidb</h4>
+<h4>usuário: defuser</h4>
+<h4>senha: teste</h4>
+
 <h3>SERVIDOR ATENDE NA PORTA 4444<h3>
 
 # Rotas da API
