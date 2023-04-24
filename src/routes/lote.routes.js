@@ -7,6 +7,7 @@ module.exports = app => {
     router.get("/", lote.getAll); // Retorna todos lotes
     router.get("/:id", lote.getById); // Retorna lote por ID
     router.get("/fk/:id", lote.getFull); // Retorna lote específicado por ID com o insumo em questão
+    router.put("/:id", lote.update); // Delete o lote com o ID especifico
     router.delete("/:id", lote.delete); // Delete o lote com o ID especifico
 
     app.use('/api/lotes', router);

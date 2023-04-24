@@ -4,7 +4,6 @@ module.exports = app => {
     var router = require("express").Router();
 
     router.post("/", usuario.create); // Criar novo usuário
-    // router.get("/", usuario.getUserBy); // Retorna todos usuários pelo nome, sem nome = retorna todos;
     router.get("/nome/:nome", usuario.getByName); // Retorna todos usuários pelo nome, sem nome = retorna todos;
     router.get("/:id", usuario.getById); // Retorna todos usuários pelo id, sem id = retorna todos;
 

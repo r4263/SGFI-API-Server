@@ -3,41 +3,48 @@
     npm install -g nodemon
 
 # Executar servidor 
-  -> desenvolvimento: "nodemon server.js"
-  -> server: "node server.js"
+  <a>-> desenvolvimento: "nodemon server.js"</a>
+  <a>-> server: "node server.js"</a>
 
 <h3>SERVIDOR ATENDE NA PORTA 4444<h3>
 
 # Rotas da API
--"/api/" default - GET -
-
--"/api/usuarios" - GET, POST - Visualizar, validar e cadastra usuários.
-
--"/api/insumos" - GET, POST - Visualizar todos e cadastrar insumos.
-
--"/api/insumos/id" - GET, PUT, DELETE - Pesquisa, edição e exclusão de insumos específicos.
--"/api/insumos/tipo"
-
--"/api/insumos/:tipo" - GET - Pesquisa específica por fármaco/insumo.
-
--"/api/compras" - GET, POST - Cadastro e pesquisa de novas compras de lotes de insumos.
-
--"/api/compras/:id" - DELETE - Exclusão de lotes de compras realizadas(apenas com permissão administrativa total).
-
--"/api/lotes" - GET, POST - Consulta e cadastro de novos lotes contidos em compras(linkado à IDCompra_FK).
-
--"/api/lotes/:id" - GET, PUT, DELETE - Consulta específica, alteração ou exclusão de um lote de compras.
-
-# Notas sobre as rotas e funcionamento do CRUD
 <div>
-<h4>POST: -Create</h4>
-<p>-JSON;</p>
+<h3>Rotas relacionadas à tabela LOTE</h3>
+<h4>localhost:4444/api/lotes/</h4>
+<p>POST - "/" - Cria novo lote</p>
+<p>GET - "/" - Retorna todos lotes cadastrados</p>
+<p>GET - "/:id" - Retorna lote por ID</p>
+<p>GET - "/fk/:id" - Retorna lote específicado por ID com as características do insumo vinculado</p>
+<p>PUT - "/:id" - Atualiza dados do lote pelo ID especificado</p>
+<p>DELETE - "/:id" - Apaga o lote especificado</p>
 </div>
+
 <div>
-<h4>GET: -Read</h4>
-<p>-Valores pela query, no link: "/?exemplo=exemplo";</p>
-<p>-Nas funções podendo ser encontrados em req.query.exemplo;</p>
+<h3>Rotas relacionadas à tabela COMPRA</h3>
+<h4>localhost:4444/api/compras/</h4>
+<p>POST - "/" - Cria nova compra</p>
+<p>GET - "/" - Retorna todas as compras</p>
+<p>GET - "/:id" - Retorna compra especificada pelo ID</p>
+<p>GET - "/usuario/:idUsuario" - Retorna todas as compras cadastradas pelo usuários especificado na chave estrangeira "idUsuario"</p>
+<p>DELETE - "/:id" - Apaga compra especificada pelo ID</p>
 </div>
-<h4>PUT: -Update</h4>
-<p>-Valores em no corpo para atualizar e req.params.id(/api/...:id) para referenciar ao objeto à ser atualizado</p>
-<p>-Aspecto de request PUT na URL: localhost:4444/api/.../2</p>
+
+<div>
+<h3>Rotas relacionadas à tabela INSUMO</h3>
+<h4>localhost:4444/api/insumos/</h4>
+<p>POST - "/" - Cria novo insumo</p>
+<p>GET - "/" - Retorna todos insumos</p>
+<p>GET - "/:id" - Retorna os insumos pelo ID</p>
+<p>GET - "/tipo/:tipo" - Retorna os insumos pelo Tipo(Insumo:0, Fármaco:1)</p>
+<p>PUT - "/:id" - Faz o update do insumo</p>
+<p>DELETE - "/:id" - Apaga insumo especificado pelo ID</p>
+</div>
+
+<div>
+<h3>Rotas relacionadas à tabela USUARIO</h3>
+<h4>localhost:4444/api/usuarios/</h4>
+<p>POST - "/" - Cria novo usuário</p>
+<p>GET - "/:id" - Retorna os usuários pelo ID</p>
+<p>GET - "/nome/:nome" - Retorna todos usuários pelo nome</p>
+</div>
