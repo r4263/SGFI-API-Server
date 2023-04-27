@@ -1,6 +1,6 @@
 # Comandos para inicializar o servidor
-    npm install express sequelize pg pg-hstore cors --save
-    npm install -g nodemon
+    npm install express sequelize pg pg-hstore cors jsonwebtoken --save 
+    npm install -g nodemon -> apenas para proposito de desenvolvimento!!
 
 # Executar servidor 
   <p>-> desenvolvimento: "nodemon server.js"</p>
